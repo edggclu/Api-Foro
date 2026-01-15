@@ -28,21 +28,22 @@ public class Topico {
     private String titulo;
     private String mensaje;
 
-    @Column(name = "fechaCreacion")
+    @Column(name = "fecha_creacion")
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    private LocalDate fechaCreacion;
+    private LocalDate fecha_creacion;
 
+    @Enumerated(EnumType.STRING)
     private StatusTopico status;
 
     @ManyToOne
     @JoinColumn(name="autor_id")
     private Usuario autor;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="curso_id")
     private Curso curso;
 
-    @OneToMany(mappedBy = "topico", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "topico", fetch = FetchType.LAZY)
     private List<Respuesta> respuesta = new ArrayList<>();
 
 }

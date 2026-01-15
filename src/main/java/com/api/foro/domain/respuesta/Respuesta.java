@@ -28,9 +28,9 @@ public class Respuesta {
     @JoinColumn(name = "topico_id")
     private Topico topico;
 
-    @Column(name = "fecha_de_creacion")
+    @Column(name = "fecha_creacion")
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    private LocalDateTime fecha_de_creacion;
+    private LocalDateTime fecha_creacion;
 
     @ManyToOne
     @JoinColumn(name = "autor_id")
