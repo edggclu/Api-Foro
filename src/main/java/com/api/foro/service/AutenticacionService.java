@@ -1,4 +1,4 @@
-package com.api.foro.domain.service;
+package com.api.foro.service;
 
 import com.api.foro.domain.usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +17,10 @@ public class AutenticacionService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
 
-        var u = repository.findByNombre(username)
+        return repository.findByNombre(username)
                 .orElseThrow(() -> {
-                            return new UsernameNotFoundException("Usuario no encontrado: " + username);
+                            throw new UsernameNotFoundException("Usuario no encontrado: " + username);
                         }
                 );
-        System.out.println(u.getPassword());
-        return u;
     }
 }

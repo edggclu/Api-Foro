@@ -1,4 +1,4 @@
-package com.api.foro.domain.service;
+package com.api.foro.service;
 
 import com.api.foro.domain.usuario.DatosDetalleUsuario;
 import com.api.foro.domain.usuario.DatosRegistroUsuario;

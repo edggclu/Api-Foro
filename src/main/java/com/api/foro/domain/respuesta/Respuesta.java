@@ -4,10 +4,7 @@ import com.api.foro.domain.topico.Topico;
 import com.api.foro.domain.usuario.Usuario;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @EqualsAndHashCode(of = "id")
 public class Respuesta {
     @Id
@@ -37,4 +35,8 @@ public class Respuesta {
     private Usuario autor;
 
     private Boolean solucion;
+
+    public void cambiarSolucion(Boolean solucion){
+        this.solucion = solucion;
+    }
 }

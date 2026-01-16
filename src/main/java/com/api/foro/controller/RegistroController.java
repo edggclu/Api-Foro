@@ -1,7 +1,6 @@
 package com.api.foro.controller;
 
-import com.api.foro.domain.service.UsuarioService;
-import com.api.foro.domain.usuario.DatosAutenticacion;
+import com.api.foro.service.UsuarioService;
 import com.api.foro.domain.usuario.DatosRegistroUsuario;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -23,7 +22,6 @@ public class RegistroController {
     @Transactional
     @PostMapping
     public ResponseEntity registrarUsuario(@RequestBody @Valid DatosRegistroUsuario datos, UriComponentsBuilder uriComponentsBuilder){
-        System.out.println("AAAAAAAAAAaa");
         var response =  usuarioService.registrarUsuario(datos);
         var uri = uriComponentsBuilder.path("/usuarios/{id}").buildAndExpand(response.id()).toUri();
         return ResponseEntity.created(uri).body(response);
